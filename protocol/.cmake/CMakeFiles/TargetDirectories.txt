@@ -1,0 +1,5 @@
+/mnt/data/dev/control/core/protocol/.cmake/CMakeFiles/socket.dir
+/mnt/data/dev/control/core/protocol/.cmake/CMakeFiles/proto.dir
+/mnt/data/dev/control/core/protocol/.cmake/CMakeFiles/test.dir
+/mnt/data/dev/control/core/protocol/.cmake/CMakeFiles/edit_cache.dir
+/mnt/data/dev/control/core/protocol/.cmake/CMakeFiles/rebuild_cache.dir
