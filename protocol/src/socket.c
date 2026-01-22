@@ -4,7 +4,6 @@
 #include <malloc.h>
 #include <stdio.h>
 
-#define SOCKET_PATH "/tmp/control.sock"
 
 typedef struct s_Response{
     char* message;
@@ -29,14 +28,16 @@ t_Response getNextMessage(int server_fd){
     response.message = realloc(response.message, n*sizeof(char));
     return response;
 }
-t_Server prepareServer(const char* name){
-    t_Server server;
-    server.server_fd = socket(AF_UNIX, SOCK_STREAM, 0);
+
+t_Server* prepareServer(const char* name){
+    t_Server *server = (t_Server*)malloc(sizeof(t_Server));
+    return server;
+    server->server_fd = socket(AF_UNIX, SOCK_STREAM, 0);
     unlink(name);
-    memset(&server.addr, 0, sizeof(server.addr));
-    server.addr.sun_family = AF_UNIX;
-    printf("got here\n:3\n");
-    strncpy(server.addr.sun_path, name, sizeof(server.addr.sun_path) - 1);      // IT'S THIS BITCH!!! OBVIOUSLY IT'S STRING COPY!!!!! I'M VERY VERY ENTHUSIASTIC ABOUT THIS, ARN'T I!?
-    bind(server.server_fd, (struct sockaddr*)&server.addr, sizeof(server.addr));    
+    memset(&server->addr, 0, sizeof(server->addr));
+    server->addr.sun_family = AF_UNIX;
+    strncpy(server->addr.sun_path, name, sizeof(server->addr.sun_path) - 1);      // IT'S THIS BITCH!!! OBVIOUSLY IT'S STRING COPY!!!!! I'M VERY VERY ENTHUSIASTIC ABOUT THIS, ARN'T I!? NEVERMIND!!! IT'S FUCKING NOT! WHAT THE 
+    printf("got here!\n>:3\n");
+    bind(server->server_fd, (struct sockaddr*)&server->addr, sizeof(server->addr));
     return server;
 }

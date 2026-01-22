@@ -14,6 +14,6 @@ typedef struct s_Server{
 }t_Server;
 
 t_Response getNextMessage(int server_fd);
-t_Server prepareServer(const char* name);
+t_Server* prepareServer(const char* name);
 
 #endif

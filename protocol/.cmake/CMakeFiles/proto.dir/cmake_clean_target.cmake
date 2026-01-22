@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "/mnt/data/dev/control/core/protocol/build/lib/libproto.a"
+  "/workspaces/yayadb-modules/protocol/build/lib/libproto.a"
 )
