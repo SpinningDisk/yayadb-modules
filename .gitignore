@@ -11,5 +11,10 @@ CMakeCache.txt
 *.so
 *.linked.o
 
+# sockets
+.sock
+
 # python
 .venv/
+.pyc
+__pycache__/
