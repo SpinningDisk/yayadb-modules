@@ -8,8 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/mnt/data/dev/control/core/protocol/src/test.c" "CMakeFiles/test.dir/src/test.c.o" "gcc" "CMakeFiles/test.dir/src/test.c.o.d"
-  "" "/mnt/data/dev/control/core/protocol/build/bin/test" "gcc" "CMakeFiles/test.dir/link.d"
+  "/workspaces/yayadb-modules/protocol/src/test.c" "CMakeFiles/test.dir/src/test.c.o" "gcc" "CMakeFiles/test.dir/src/test.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

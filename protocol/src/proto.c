@@ -41,6 +41,7 @@ typedef struct s_ProtoState{
 }t_ProtoState;
 
 t_ProtoState* _initProto_(const char* server_name){
+    Py_Initialize();
     // fill fields
     t_ProtoState *proto = (t_ProtoState*)malloc(sizeof(t_ProtoState));
     
@@ -56,17 +57,21 @@ t_ProtoState* _initProto_(const char* server_name){
     for(int i=0; i<PROTO_INIT_MOD_COUNT; i++){
         proto->module_cache[i] = (PyObject**)malloc(sizeof(PyObject*)*PROTO_MOD_CACHE_SIZE);
     }
-    proto->module_cache_index = calloc(PROTO_MOD_CACHE_SIZE, sizeof(unsigned int));
-    proto->server = prepareServer(server_name);
-    printf("got here\n:3\n");
+    // proto->module_cache_index = calloc(PROTO_MOD_CACHE_SIZE, sizeof(unsigned int));
+    printf("hello from proto!\n\tname: %s\n", server_name);
+    proto->server = *prepareServer(server_name);
+    printf("got here\n:3c\n");
 
 
     // get necessary modules
-    // 0: pickle;   1: ???  2: ???  3: ???
+    // 0: pip;   1: pickle  2: ???  3: ???
+    PyObject* pickle = PyImport_ImportModule("pickle");
+    printf("module \"pickle\" at %p\n", pickle);
     proto->modules[0] = PyImport_ImportModule("pickle");
-
+    printf("Hi:3c\n");
     // get common functions of modules and fill cache
-    proto->module_cache[0][1] = PyObject_GetAttrString(proto->modules[0], "dumps");
+    proto->module_cache[0][0] = PyObject_GetAttrString(proto->modules[0], "dumps");
+    printf(":3c\n");
     return proto;
 }
 t_ProtoState* checkProtoAllocations(t_ProtoState* proto){
